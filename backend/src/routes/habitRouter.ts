@@ -95,6 +95,7 @@ router.get('/:id', async (req, res) => {
                 data: null,
                 error: "Habit Does Not Exists"
             });
+            return;
         }
 
         res.status(200).json({

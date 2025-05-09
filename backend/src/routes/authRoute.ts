@@ -62,6 +62,7 @@ router.post('/signup', express.json(), async (req, res) => {
         res.status(201).json({
             msg: "User Created",
             data: {
+                username: user.username,
                 token: token
             },
             error: null
@@ -126,6 +127,7 @@ router.post('/signin', express.json(), async (req, res) => {
         res.status(200).json({
             msg: "User Signed In",
             data: {
+                username: user.username,
                 token: token
             },
             error: null
