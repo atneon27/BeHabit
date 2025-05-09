@@ -12,8 +12,20 @@ const UserSigninSchema = z.object({
     password: z.string().min(8)
 });
 
+const HabitSchema = z.object({
+    name: z.string(),
+    description: z.string()
+});
+
+const ItemSchema = z.object({
+    name: z.string(),
+    description: z.string(),
+});
+
 type UserSignupType = z.infer<typeof UserSignupSchema>;
 type UserSigninType = z.infer<typeof UserSigninSchema>;
+type HabitType = z.infer<typeof HabitSchema>;
+type ItemType = z.infer<typeof ItemSchema>;
 
 interface CustomRequest extends Request {
     userId?: string;
@@ -22,7 +34,11 @@ interface CustomRequest extends Request {
 export {
     UserSignupSchema,
     UserSigninSchema,
+    HabitSchema,
+    ItemSchema,
     UserSignupType, 
     UserSigninType,
-    CustomRequest
+    CustomRequest,
+    HabitType,
+    ItemType
 }

@@ -9,6 +9,7 @@ export default function authMiddleware(req: CustomRequest, res: Response, next: 
         
         if(!authHeader || !token) {
             res.status(401).json({
+                msg: null,
                 data: null,
                 error: "Unauthorized"
             });
@@ -22,6 +23,7 @@ export default function authMiddleware(req: CustomRequest, res: Response, next: 
 
         if(!decodedToken || !decodedToken.userId) {
             res.status(401).json({
+                msg: null,
                 data: null,
                 error: "Unauthorized"
             });
@@ -33,6 +35,7 @@ export default function authMiddleware(req: CustomRequest, res: Response, next: 
         next();
     } catch(err) {
         res.status(500).json({
+            msg: null,
             data: null,
             error: "Internal Server Error"
         });

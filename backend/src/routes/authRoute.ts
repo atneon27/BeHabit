@@ -13,6 +13,7 @@ router.post('/signup', express.json(), async (req, res) => {
         
         if(!paresedBody.success) {
             res.status(400).json({
+                msg: null,
                 data: null,
                 error: paresedBody.error.issues
             });
@@ -35,6 +36,7 @@ router.post('/signup', express.json(), async (req, res) => {
 
         if(userWithEmail || userWithUsername) {
             res.status(403).json({
+                msg: null,
                 data: null,
                 error: "User Already Exists"
             });
@@ -58,6 +60,7 @@ router.post('/signup', express.json(), async (req, res) => {
         );
 
         res.status(201).json({
+            msg: "User Created",
             data: {
                 token: token
             },
@@ -65,6 +68,7 @@ router.post('/signup', express.json(), async (req, res) => {
         });
     } catch(err) {
         res.status(500).json({
+            msg: null,
             data: null,
             error: "Internal Server Error"
         });
@@ -78,6 +82,7 @@ router.post('/signin', express.json(), async (req, res) => {
         
         if(!paresedBody.success) {
             res.status(400).json({
+                msg: null,
                 data: null,
                 error: "Invalid Data Recived"
             });
@@ -94,6 +99,7 @@ router.post('/signin', express.json(), async (req, res) => {
 
         if(!user) {
             res.status(404).json({
+                msg: null,
                 data: null,
                 error: "User Dose Not Exists"
             });
@@ -104,6 +110,7 @@ router.post('/signin', express.json(), async (req, res) => {
 
         if(!comparePassword) {
             res.status(403).json({
+                msg: null,
                 data: null,
                 error: "Invalid Password"
             });
@@ -117,6 +124,7 @@ router.post('/signin', express.json(), async (req, res) => {
         );
 
         res.status(200).json({
+            msg: "User Signed In",
             data: {
                 token: token
             },
@@ -124,6 +132,7 @@ router.post('/signin', express.json(), async (req, res) => {
         });
     } catch(err) {
         res.status(500).json({
+            msg: null,
             data: null,
             error: "Internal Server Error"
         })
